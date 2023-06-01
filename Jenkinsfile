@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Validate Manifest') {
+        stage('Validate Manifests') {
             steps {
-                yamlLint file: '/demo.yaml'
+                kubeval {
+                    files '**/*.yaml'
+                }
             }
         }
+        
+        // Add more stages as needed
     }
+    
+    // Add post section for post-build actions if required
 }
