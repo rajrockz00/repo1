@@ -1,11 +1,11 @@
-stage('Validate Manifest') {
-    steps {
-        script {
-            def manifestFile = '/demo.yaml'
-            def schemaFile = '/demo.yaml'
+pipeline {
+    agent any
 
-            // Validate the manifest against the schema
-            validate file: manifestFile, schema: schemaFile
+    stages {
+        stage('Validate Manifest') {
+            steps {
+                yamlLint file: '/demo.yaml'
+            }
         }
     }
 }
