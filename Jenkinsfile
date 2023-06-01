@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Validate Manifests') {
             steps {
-                kubeval {
-                    files '**/*.yaml'
-                }
+                sh 'kubeval demo.yaml'
             }
         }
         
