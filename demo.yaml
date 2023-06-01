@@ -33,7 +33,7 @@ spec:
             cpu: "125m"
           limits:
             memory: "128Mi"
-            cpu: "250m"
+  cpu: "250m"
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -50,7 +50,7 @@ spec:
           timeoutSeconds: 5       
         env:
         - name: PORT
-          value: "8080"
+value: "8080"
 ---
 apiVersion: v1
 kind: Service
@@ -58,7 +58,7 @@ metadata:
   name: microsvc
   labels:
     app: microsvc
-    tier: service
+ tier: service
 spec:
   type: NodePort
   ports:
@@ -66,7 +66,7 @@ spec:
   selector:
     app: microsvc
 ---
-apiVersion: extensions/v1beta1
+apiversion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: microsvc
@@ -76,4 +76,4 @@ metadata:
 spec:
   backend:
     serviceName: microsvc
-    servicePort: 8080
+servicePort: 8080
