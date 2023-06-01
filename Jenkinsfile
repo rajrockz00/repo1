@@ -1,21 +1,11 @@
-pipeline {
-   agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'mvn -B -DskipTests clean package'
-        
-      }
-    }
-    stage('sonar') {
-      steps {
-        withSonarQubeEnv('sonar') {
-            sh "ls"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            //waitForQualityGate abortPipeline: true
+stage('Validate Manifest') {
+    steps {
+        script {
+            def manifestFile = '/demo.yaml'
+            def schemaFile = '/demo.yaml'
+
+            // Validate the manifest against the schema
+            validate file: manifestFile, schema: schemaFile
         }
     }
-}
-  }
 }
