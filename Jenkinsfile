@@ -10,7 +10,7 @@ pipeline {
 }
         stage('Validate Manifests') {
             steps {
-                sh 'kubeval demo.yaml'
+                sh 'kubeval *.yaml'
             }
         }
         
